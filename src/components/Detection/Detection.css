@@ -53,6 +53,11 @@
 	color: white !important;
 	font-weight: 600 !important;
 }
+.detection__uploadDetectReset {
+	background-color: rgb(25, 34, 209) !important;
+	color: white !important;
+	font-weight: 600 !important;
+}
 .detection__uploadDetectUploadIcon {
 	position: relative;
 	left: 5px;
@@ -77,4 +82,18 @@
 }
 label{
     cursor: pointer;
+}
+
+.detection__radioGroup {
+	margin-bottom: 1pc;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.detection__validationMessages {
+	margin: 1pc;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 }

@@ -2,22 +2,33 @@ import { Button } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import './Detection.css';
 
 function CovidDetection() {
 	const [result, setResult] = useState(null);
-	const [files, setFiles] = useState(null);
+	const [imageFiles, setImageFiles] = useState(null);
+
+	useEffect(() => {
+		if (imageFiles) {
+			console.log("updated files in c", imageFiles)
+			console.log("updated files first element", imageFiles[0])
+		}
+	}, [imageFiles])
+	
 
 	const uploadImage = () => {
 		let reader = new FileReader();
-		reader.readAsDataURL(files[0]);
+		reader.readAsDataURL(imageFiles[0]);
+		console.log('files', imageFiles);
 		reader.onload = (e) => {
 			const URL__ENDPOINT = 'http://localhost:5000/predict';
-			console.log(files[0]);
+
 			const formData = new FormData();
-			formData.append('file', files[0], files[0].name);
-			console.log(files[0]);
+			formData.append('file', imageFiles[0], imageFiles[0].name);
+			formData.append('type', 0);
+
 			axios.post(URL__ENDPOINT, formData).then((res) => {
 				console.log(res);
 				setResult(res.data);
@@ -59,10 +70,10 @@ function CovidDetection() {
 				<input
 					style={{ display: 'none' }}
 					type="file"
-					name="file"
-					id="imageUpload"
+					name="cfile"
+					id="cfile"
 					accept=".png, .jpg, .jpeg"
-					onChange={(e) => setFiles(e.target.files)}
+					onChange={(e) => setImageFiles(e.target.files)}
 				/>
 
 				{/* detect */}

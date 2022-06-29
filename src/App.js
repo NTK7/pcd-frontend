@@ -1,6 +1,5 @@
 import './App.css';
 import About from './components/About/About';
-import CovidDetection from './components/Detection/CovidDetection';
 import Detection from './components/Detection/Detection';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -20,7 +19,6 @@ function App() {
 				</div>
 
 				<Detection />
-				<CovidDetection />
 			</div>
 
 			<Footer />
